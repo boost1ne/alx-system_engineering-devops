@@ -1,3 +1,2 @@
 #!/bin/bash
-tail -n 10 /etc/passw
-d
+tail -n 10 /etc/pass
