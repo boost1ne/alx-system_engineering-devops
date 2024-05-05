@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# Displays from 1 to 20 with 4 bad luck from China
-# 7 bad luck in Japan
-# 17 in  Italy
+# Displays from 1 to 20 with 4 bad luck from China 9 bad luck in Japan and 17 in  Italy
 
 i=1
 
@@ -11,7 +9,7 @@ while [ $i -lt 21 ]; do
         4)
             echo "bad luck from China"
             ;;
-        7)
+        9)
             echo "bad luck from Japan"
             ;;
         17)
