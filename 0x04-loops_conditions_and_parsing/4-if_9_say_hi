@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Displays Best School
+# using while loop.
+# When iteration reaches 8, display Hi before the last line.
+
+sentence="Best School"
+i=0
+
+while [ $i -lt 9 ]; do
+    if [ $i -eq 8 ]; then
+        echo "Hi"
+    fi
+    echo "$sentence"
+    i=$(($i+1))
+done
