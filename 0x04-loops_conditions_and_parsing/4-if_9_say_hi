@@ -4,9 +4,9 @@
 sentence="Best School"
 i=0
 
-while [ $i -lt 9 ]; do
+while [ $i -lt 10 ]; do
   echo "$sentence"
-  if [ $i -eq 7 ]; then  # Check for i = 8 (ninth iteration)
+  if [ $i -eq 8 ]; then  #
     echo "Hi"
   fi
   i=$((i+1))
