@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# displays Best School 10 times.
+
+# Set the sentence to display
+
+sentence="Best School"
+
+for((i = 0; i < 10; i++)); do
+	echo "$sentence"
+done;
