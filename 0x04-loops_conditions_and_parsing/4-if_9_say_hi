@@ -4,7 +4,7 @@
 sentence="Best School"
 i=0
 
-while [ $i -lt 9 ]; do
+while [ $i -lt 10 ]; do
     if [ $i -eq 8 ]; then
         echo "Hi"
     fi
