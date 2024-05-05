@@ -7,6 +7,6 @@ sentence="Best School"
 i=0
 
 while [ $i -lt 10 ]; do
-	echo"$sentence"
+	echo "$sentence"
 	i=$((i+1))
 done;
