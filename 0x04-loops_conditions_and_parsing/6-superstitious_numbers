@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Displays from 1 to 20 with 4 bad luck from China
+# 7 bad luck in Japan
+# 17 in  Italy
+
+i=1
+
+while [ $i -lt 21 ]; do
+    echo $i
+    case $i in
+        4)
+            echo "bad luck from China"
+            ;;
+        7)
+            echo "bad luck from Japan"
+            ;;
+        17)
+            echo "bad luck from Italy"
+            ;;
+    esac
+    ((i++))
+
+done
