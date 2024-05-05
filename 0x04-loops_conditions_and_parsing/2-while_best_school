@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Displays Best School 
+# using while loop.
+
+sentence="Best School"
+
+i=0
+
+while [ $i -lt 10 ]; do
+	echo"$sentence"
+	i=$((i+1))
+done;
