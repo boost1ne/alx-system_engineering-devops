@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# Displays Best School
-# using while loop.
-# When iteration reaches 8, display Hi before the last line.
+# Displays Best School x10 and hi before last.
 
 sentence="Best School"
 i=0
