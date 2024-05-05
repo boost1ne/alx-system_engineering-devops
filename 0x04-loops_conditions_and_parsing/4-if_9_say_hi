@@ -11,5 +11,5 @@ while [ $i -lt 9 ]; do
         echo "Hi"
     fi
     echo "$sentence"
-    i=$(($i+1))
+    i=$((i+1))
 done
