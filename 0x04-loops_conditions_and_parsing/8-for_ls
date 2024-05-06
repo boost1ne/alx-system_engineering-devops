@@ -1,14 +1,8 @@
 #!/bin/bash env
-# Loop through each file in the current directory
+# Loop through each file in the current dir then lists files
 
-for file in *; do
+current_dir=$(ls)
 
-    if [[ "$file" == .* || ! -f "$file" ]]; then
-        continue
-    fi
-
-    name=$(echo "$file" | cut -d '-' -f 2-)
-    
-
-    echo "$name"
+for file in $current_dir; do
+    echo "$file" | cut -d "-" -f3-
 done
