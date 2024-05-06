@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Prints numbers from 1 to 100 in fizzbuzz format
 
 for i in {1..100}; do
