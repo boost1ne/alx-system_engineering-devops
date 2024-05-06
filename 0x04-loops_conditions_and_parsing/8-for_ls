@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# displays the content of the current directory then listing it
 
-current_directory=$(ls)
+# Display content of current directory in a list format
 
-for file in $current_directory; do
-    echo "$file" | cut -d "-" -f3-
+for i in *
+do
+    echo "$i" | cut -d'-' -f2
 done
