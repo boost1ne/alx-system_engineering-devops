@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# List all processes, including those from other users,
+# and display them in a tree-like format, which helps visualize the process hierarchy.
+
+ps -auxf
