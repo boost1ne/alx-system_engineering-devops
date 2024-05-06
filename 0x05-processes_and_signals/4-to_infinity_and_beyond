@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Loop and Sleep: diplays txt  and stop for 2 secs, introducing a delay.
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
+
