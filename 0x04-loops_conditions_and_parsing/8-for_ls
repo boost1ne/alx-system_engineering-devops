@@ -1,8 +1,8 @@
-#!/bin/bash env
-# Loop through each file in the current dir then lists files
+#!/usr/bin/env bash
+# displays the content of the current directory then listing it
 
-current_dir=$(ls)
+current_directory=$(ls)
 
-for file in $current_dir; do
+for file in $current_directory; do
     echo "$file" | cut -d "-" -f3-
 done
