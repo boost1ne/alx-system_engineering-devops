@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#About ICMP and ping
+
+
+
+if [[ -z $1 ]]; then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+	exit 1
+fi
+
+IP_add="$1"
+
+ping -c 5 "$IP_add"
