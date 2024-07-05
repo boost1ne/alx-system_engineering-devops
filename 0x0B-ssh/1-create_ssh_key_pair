@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Generate an RSa key pair with certain specefications.
+
+ssh-keygen -t rsa -b 4096 -f "school" -N "betty"
