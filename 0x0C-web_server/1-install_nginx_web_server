@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # Install and configure Nginx server (in remote server).
 
-# Update apt-get (first time use) and Install Nginx
+# Update package list and install nginx
 sudo apt-get -y update
-sudo apt-get -y install nginx
-# reconfigure firewall to allow access to the nginx service
-sudo ufw allow 'Nginx HTTP'
+sudo apt-get install -y nginx
 
-# configure (use defaults), just replace index.html's contents
-echo "Hello World!" | sudo tee /var/www/html/index.html
-# once done, restart nginx to enable the changes
+# Ensure nginx is listening to port 80
+ufw allow 'Nginx HTTP'
+
+# Set up the default page
+echo "Hello World!" > /var/www/html/index.html
+
+# Restart nginx (without using systemctl)
 sudo service nginx restart
