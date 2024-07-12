@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Fix server error msg after curling port 80 and return a page that contains Hello Holberton.
+
+sudo service apache2 status
