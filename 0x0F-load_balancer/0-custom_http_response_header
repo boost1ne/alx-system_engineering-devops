@@ -5,31 +5,16 @@ sudo apt -y update
 
 sudo apt -y install nginx
 
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
+config="/etc/nginx/sites-available/default"
 
-touch /etc/nginx/html/404.html
-echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+sudo sh -c "echo 'Hello World!' > /var/www/html/index.nginx-debian.html"
 
-printf %s "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        add_header X-Served-By $hostname;
+sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;}' $config
 
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-        root /var/www/html;
+sudo sed -i '/^}$/i \ \n\tlocation @404 {return 404 "Ceci n'\''est pas une page\\n";}' $config
 
-        index index.html index.htm index.nginx-debian.html;
+sudo sed -i 's/=404/@404/g' $config
 
-        error_page 404 /404.html;
-        server_name _;
-
-        location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ @404;
-        }
-}" > /etc/nginx/sites-available/default
+sudo sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$HOSTNAME';/" $config
 
 sudo service nginx restart
