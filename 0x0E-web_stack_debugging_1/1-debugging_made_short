@@ -2,4 +2,4 @@
 # Script ensures that Nginx is installed, configured to listen on port 80.
 cat /etc/nginx/sites-available/default > /etc/nginx/sites-enabled/default
 sudo service nginx restart
-sudo rm /run/nginx/pid
+sudo rm /run/nginx.pid
