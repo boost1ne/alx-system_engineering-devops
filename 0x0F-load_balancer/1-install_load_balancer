@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#install and configure load balancer:HAproxy that it send traffic to web-01 and web-02.
+
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+sudo chown $USER:USER /etc/haproxy/haproxy.cfg
+
+echo "
+frontend berryfronty
+    bind *:80
+    mode http
+    default_backend back_pool
+
+backend back_pool
+    balance roundrobin
+    server 529112-web-01 35.153.17.97:80 check
+    server 529112-web-02 54.237.43.3:80 check" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
