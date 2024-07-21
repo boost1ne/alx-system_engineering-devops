@@ -1,32 +1,12 @@
 #!/usr/bin/env bash
-# Displays the information about subdomains (as configured in your domain zone)
-# Requirements:
-#	Accepts 2 arguments (domain and subdomain(optional)) and returns information about them
-# 	Must use 'awk' and at least 1 function
+#Displays the information about subdomains (as configured in your domain zone)
 
-# define the function
-# shellcheck disable=SC2066
-subdomains() {
-	if [ $# -eq 1 ]
-	then
-		# print info about all the 4 subdomains (www, lb-1, web-01 & web-02)
-		for sub_d in www lb-01 web-01 web-02
-		do
-			dig $sub_d.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v sub_d=$sub_d '{print "The subdomain " sub_d " is a " $4 " record and points to " $5}'
-		done
-	elif [ $# -eq 2 ]
-	then
-		# print info about the specific subdomain
-		local subd=$2
-		dig $2.$1 | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v sub_d=$subd '{print "The subdomain "  sub_d  " is a " $4 " record and points to " $5}'
-	fi
-}
-
-# call the function with the arguments
-if [ $# -eq 1 ]
-then
-	subdomains $1
-elif [ $# -eq 2 ]
-then
-	subdomains $1 $2
+if [ "$#" -eq 1 ]; then
+    echo "$(dig www.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain www is a "$4" record and points to "$5}')"
+    echo "$(dig lb-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain lb-01 is a "$4" record and points to "$5}')"
+    echo "$(dig web-01.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-01 is a "$4" record and points to "$5}')"
+    echo "$(dig web-02.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain web-02 is a "$4" record and points to "$5}')"
+elif [ "$#" -eq 2 ]; then
+    subdomain=$2
+    echo "$(dig $subdomain.$1 | awk '/ANSWER SECTION:/ {getline; print "The subdomain '"$subdomain"' is a "$4" record and points to "$5}')"
 fi
