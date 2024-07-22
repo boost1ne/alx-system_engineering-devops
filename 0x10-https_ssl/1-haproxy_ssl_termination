@@ -33,14 +33,14 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend nginx-apps
+frontend berrybug-frontend
 	bind *:80
-	bind *:443 ssl crt /etc/haproxy/certs/lb-01.whosadevnow.tech.pem
+	bind *:443 ssl crt /etc/haproxy/certs/lb-01.berrybug.tech.pem
 	mode http
-	default_backend nginx
+	default_backend berrybug-backend
 
-backend nginx
+backend berrybug-backend
 	mode http
 	balance roundrobin
-	server 83517-web-01 54.82.173.163 check
-	server 83517-web-02 18.210.20.118 check
+	server 529112-web-01 35.153.17.97 check
+	server 529112-web-02 54.237.43.3 check
