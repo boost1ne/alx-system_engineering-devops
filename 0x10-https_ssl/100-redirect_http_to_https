@@ -42,6 +42,7 @@ frontend berrybug-frontend
 
 frontend berrybug-frontend-https
         bind *:443 ssl crt /etc/haproxy/certs/www.berrybug.tech.pem
+	http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X-Forwarded-Proto https
         default_backend berrybug-backend
 
