@@ -6,14 +6,17 @@
 import requests
 
 
+import requests
+
+headers = {"User-Agent": "MyCustomUserAgent/1.0"}
+
+
 def number_of_subscribers(subreddit):
-    """ requests the API """
-    # set a custom User-Agent
-    headers = {'User-Agent': 'APIadvanced/1.0.0'}
-    # set/format url (with subreddit name)
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    res = requests.get(url, headers=headers, allow_redirects=False)
-    try:
-        return res.json().get('data').get('subscribers')
-    except Exception as e:
+    """method doc"""
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    response = requests.get(url, allow_redirects=False, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        return data["data"]["subscribers"]
+    else:
         return 0
