@@ -3,20 +3,19 @@
     first 10 hot posts listed for a given subreddit. Prints None if an
     invalid subreddit is given
 """
+
 import requests
+
+headers = {"User-Agent": "MyCustomUserAgent/1.0"}
 
 
 def top_ten(subreddit):
-    # set a custom User-Agent
-    headers = {'User-Agent': 'APIadvanced/1.0.0'}
-    # set/format url (with subreddit name)
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    res = requests.get(url, headers=headers, params={
-                       'limit': 10}, allow_redirects=False)
-    try:
-        data = res.json()['data']['children']
-        # print('data: ', data)
-        for post in data:
-            print(post['data']['title'])
-    except Exception as e:
-        print(None)
+    """method doc"""
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    response = requests.get(url, allow_redirects=False, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        for post in data["data"]["children"]:
+            print(post["data"]["title"])
+    else:
+        print("None")
